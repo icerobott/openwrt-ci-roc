@@ -100,14 +100,5 @@ rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2sock
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth=1 https://github.com/vernesong/OpenClash package/luci-app-openclash
 
-# QModem - 4G/5G USB 上网模组管理
-git clone --depth=1 https://github.com/FUjr/QModem package/QModem
-
 ./scripts/feeds update -i -a
 ./scripts/feeds install -a
-
-# 清理可能损坏的 NSS symvers 缓存，强制重新编译 NSS 相关模块
-rm -rf build_dir/*/linux-*/qca-nss-ecm-*/.built
-rm -rf build_dir/*/linux-*/qca-nss-drv-*/.built
-rm -rf build_dir/*/symvers/qca-nss-*.symvers
-rm -rf build_dir/*/symvers/nss-*.symvers
