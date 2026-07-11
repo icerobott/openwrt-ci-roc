@@ -15,7 +15,7 @@ jobs:
       actions: write
     with:
       repo_url: https://github.com/LiBwrt/openwrt-6.x.git
-      repo_branch: main
+      repo_branch: master
       config_file: configs/JDCloud.config
       firmware_tag: JDCloud-LiBwrt
       kernel_file: kernel-6.12
