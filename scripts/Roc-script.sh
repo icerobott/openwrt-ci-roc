@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-# 修改默认IP & 固件名称 & 编译署名和时间
+# 修改默认IP
 sed -i 's/192.168.1.1/192.168.15.1/g' package/base-files/files/bin/config_generate
-sed -i "s/hostname='.*'/hostname='Roc'/g" package/base-files/files/bin/config_generate
+
+# 主机名按源码区分
+if echo "${SOURCE_REPO:-}" | grep -qi "immortalwrt\|openwrt-6.x"; then
+  case "$SOURCE_REPO" in
+    *immortalwrt*) sed -i "s/hostname='.*'/hostname='ImmortalWrt'/g" package/base-files/files/bin/config_generate ;;
+    *)             sed -i "s/hostname='.*'/hostname='LiBwrt'/g"    package/base-files/files/bin/config_generate ;;
+  esac
+fi
 
 # 设置默认 root 密码为 password
 PASSWORD_HASH=$(openssl passwd -1 "password")
