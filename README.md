@@ -40,7 +40,7 @@ QModem 源码编译与 NSS ECM 冲突，改为刷机后 apk 后装：
 
 ```bash
 cd /tmp
-wget https://gh.255913.xyz/https://github.com/FUjr/QModem/releases/download/v3.1.0/QModem-arm64_apk.tar.gz
+wget https://github.com/FUjr/QModem/releases/download/v3.1.0/QModem-arm64_apk.tar.gz
 tar -xzf QModem-arm64_apk.tar.gz
 apk add --allow-untrusted *.apk
 ```
